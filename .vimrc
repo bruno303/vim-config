@@ -26,6 +26,7 @@ Plug 'dense-analysis/ale'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'udalov/kotlin-vim'
 Plug 'voldikss/vim-floaterm'
+Plug 'kien/ctrlp.vim'
 
 call plug#end()
 
@@ -82,6 +83,7 @@ let g:indentLine_enabled = 1
 map <c-k>i :IndentLinesToggle<cr>
 
 map <C-n> :NERDTreeToggle<cr>
+map <F5> :NERDTreeRefreshRoot<cr>
 let NERDTreeShowHidden=1
 set encoding=utf8
 set guifont=JetBrains\ Mono:h12
@@ -103,6 +105,8 @@ nnoremap <c-x> :bp\|bd #<cr>
 let g:ctrlp_custom_ignore = '\v[\/]\.(swp|zip)$'
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 let g:ctrlp_show_hidden = 1
+nnoremap <C-p> :CtrlP <cr>
+nnoremap <C-t> :CtrlPTag<cr>
 
 filetype plugin on
 let g:NERDSpaceDelims = 1
@@ -125,4 +129,10 @@ source ~/.vim/coc.nvimrc
 "let g:floaterm_keymap_prev   = '<F8>'
 "let g:floaterm_keymap_next   = '<F9>'
 let g:floaterm_keymap_toggle = '<F12>'
+let g:floaterm_height = 0.3
 
+let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-html', 'coc-java', 'coc-sh', 'coc-css', 'coc-yaml']
+
+
+command! JavaCompile :CocCommand java.workspace.compile
+command! JavaClean :CocCommand java.clean.compile
